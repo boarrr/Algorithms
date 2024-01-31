@@ -1,0 +1,13 @@
+// X to the power of Y in pseudocode
+
+START
+  GET X, Y
+
+  SET result = 1
+
+  WHILE Y > 0
+    SET result = result * X
+    Y = Y - 1
+
+  PRINT result
+END

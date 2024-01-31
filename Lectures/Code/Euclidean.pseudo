@@ -1,0 +1,20 @@
+// Euclidean Algorithm in pseudo-code
+
+START
+  INPUT: A, B
+
+  WHILE b != 0
+    temp = b
+    b = a % b
+    a = temp
+  RETURN a
+END
+
+
+START
+  gcd(a, b)
+    IF (b = 0)
+      RETURN a
+    ELSE
+      RETURN gcd(b, a % b)
+END

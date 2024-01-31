@@ -1,0 +1,30 @@
+START
+  INPUT num1, num2
+  SET total = num1
+
+  WHILE num2 > 0
+    total = total + num1
+    num2 = num2 - 1
+  ENDWHILE
+
+  PRINT total
+END
+
+
+START
+  INPUT A, B, C
+
+  IF A > B
+    IF A > C
+      PRINT C
+    ELSE
+      PRINT A
+    ENDIF
+  ELSE
+    IF B > C
+      PRINT C
+    ELSE
+      PRINT B
+    ENDIF
+  ENDIF
+END
