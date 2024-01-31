@@ -25,3 +25,17 @@ int power(int num, int exp)
   else
     return num * power(num, exp - 1);
 }
+
+// Call Stack:
+//   power(2, 4)
+//   power(2, 3)
+//   power(2, 2)
+//   power(2, 1)
+//   power(2, 0)
+//   return 1
+//   return 2 * 1 = 2
+//   return 2 * 2 = 4
+//   return 2 * 4 = 8
+//   return 2 * 8 = 16
+//   return 16
+
