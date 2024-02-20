@@ -35,7 +35,8 @@ int main(void)
 
 void bubbleSort(int* arr, int size)
 {
-  int tmp;
+  int tmp, swap = 0;
+ 
 
   for (int i = 0; i < size; i++)
   {
@@ -46,7 +47,10 @@ void bubbleSort(int* arr, int size)
         tmp = arr[j];
         arr[j] = arr[j+1];
         arr[j+1] = tmp;
+        swap = 1;
       }
     }
+    
+    if (swap == 0) break;
   }
 }
