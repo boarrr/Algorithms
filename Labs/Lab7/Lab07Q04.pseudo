@@ -1,0 +1,28 @@
+// A simple algorithm to find a particular number in an ordered array
+
+START
+  READ A
+  SET LOW = 0
+  SET HIGH = A.length  
+
+  INPUT NUM
+
+  WHILE LOW <= HIGH
+
+    SET MID = N / 2
+
+    IF A[MID] = NUM
+      PRINT "Found"
+      BREAK
+      
+    ELSE IF A[MID] < num
+      SET LOW = MID + 1
+
+    ELSE
+      SET HIGH = MID - 1
+
+  ENDWHILE
+
+  IF LOW > HIGH
+    PRINT "Not Found"
+END

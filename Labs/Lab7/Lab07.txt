@@ -1,0 +1,132 @@
+// Pseudo code implementation of a simple searching algorithm, to find the lowest and highest value in an array.
+
+START
+    READ A 
+    SET min = A[0]
+    SET max = A[0]
+    SET N = A.length
+  
+    FOR i = 1 to N - 1 THEN
+      IF A[i] < min THEN
+        min = A[i]
+      ELSE IF A[i] > max THEN
+        max = A[i]
+      ENDIF
+    ENDFOR
+
+    PRINT min
+    PRINT max
+END
+
+
+Big O is O(N)
+
+/*
+  Description: A simple searching algorithm to find the max and min in an unsorted array
+  Author: Ryan Pitman
+  Date: 12/03/2024
+*/
+
+#include <stdio.h>
+
+#define SIZE 6
+
+void search(int*, int);
+
+int main(void) 
+{
+  int nums[SIZE] = {4,2,6,1,8,3};
+
+  search(nums, (sizeof(nums) / sizeof(nums[0])));
+
+  return 0;
+}
+
+void search (int* arr, int len)
+{
+  int min = arr[0], max = arr[0];
+
+  for (int i = 1; i < len; i++)
+  {
+    if (arr[i] < min) min = arr[i];
+    else if (arr[i] > max) max = arr[i];
+  }
+
+  printf("The min is: %d, and the max is: %d\n", min, max);
+}
+
+
+// A simple algorithm to find a particular number in an ordered array
+
+START
+  READ A
+  SET LOW = 0
+  SET HIGH = A.length  
+
+  INPUT NUM
+
+  WHILE LOW <= HIGH
+
+    SET MID = N / 2
+
+    IF A[MID] = NUM
+      PRINT "Found"
+      BREAK
+      
+    ELSE IF A[MID] < num
+      SET LOW = MID + 1
+
+    ELSE
+      SET HIGH = MID - 1
+
+  ENDWHILE
+
+  IF LOW > HIGH
+    PRINT "Not Found"
+END
+
+Big O = O(LogN)
+
+
+/*
+  Description: A simple implementation of binary search, to find a number in a sorted array
+  Author: Ryan Pitman
+  Date: 12/03/2024
+*/
+
+#include <stdio.h>
+
+#define SIZE 6
+
+void search(int*, int, int);
+
+int main(void)
+{
+  int nums[SIZE] = {1,2,3,4,5,6}; 
+  int numToFind = 5;
+
+  search(nums, sizeof(nums) / sizeof(nums[0]), numToFind);
+  
+  return 0;
+}
+
+void search(int* nums, int size, int numToFind)
+{
+  int low = 0;
+  int high = size - 1;
+  int mid;
+
+  while (low <= high)
+  {
+    mid = (low + high) / 2;
+    if (nums[mid] == numToFind)
+    {
+      printf("Number %d found at index %d\n", numToFind, mid);
+      break;
+    }
+    else if (nums[mid] < numToFind) low = mid + 1;
+    else high = mid - 1;
+  }
+
+  if (low > high) printf("Number %d not found\n", numToFind);
+}

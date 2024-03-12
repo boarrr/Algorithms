@@ -1,0 +1,19 @@
+// Pseudo code implementation of a simple searching algorithm, to find the lowest and highest value in an array.
+
+START
+    READ A 
+    SET min = A[0]
+    SET max = A[0]
+    SET N = A.length
+  
+    FOR i = 1 to N - 1 THEN
+      IF A[i] < min THEN
+        min = A[i]
+      ELSE IF A[i] > max THEN
+        max = A[i]
+      ENDIF
+    ENDFOR
+
+    PRINT min
+    PRINT max
+END
