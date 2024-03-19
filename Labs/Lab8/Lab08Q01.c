@@ -1,0 +1,133 @@
+/*
+  Description: A program to generate two random 100 number arrays, sort both lists using insertion sort, and then combine the lists into a 200
+  element list. Then search the list for a random number.
+  Author: Ryan Pitman
+  Date: 19/03/2024
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define SIZE 100
+
+void insertion_sort(int*, int);
+void display_arr(int[], int);
+void merge_sort(int*, int*, int*, int);
+void binary_search(int[], int, int, int);
+
+
+int main(void)
+{
+  int nums1[SIZE], nums2[SIZE];
+  int result[SIZE * 2];
+
+  srand(time(0));
+
+  for (int i = 0; i < SIZE; i++)
+  {
+    nums1[i] = rand() % 100;
+    nums2[i] = rand() % 100;
+  }
+
+  // Output the unsorted arrays
+  printf("\n-----Array One Unsorted-----\n");
+  display_arr(nums1, SIZE);
+  printf("\n");
+
+  printf("\n-----Array Two Unsorted-----\n");
+  display_arr(nums2, SIZE);
+  printf("\n\n");
+
+
+  // Sort the two arrays using insertion sort
+  insertion_sort(nums1, SIZE);
+  insertion_sort(nums2, SIZE);
+
+
+  // Output the sorted arrays
+  printf("\n-----Array One Sorted-----\n");
+  display_arr(nums1, SIZE);
+  printf("\n");
+
+  printf("\n-----Array Two Sorted-----\n");
+  display_arr(nums2, SIZE);
+  printf("\n\n");
+
+
+  // Merge the two arrays into the result array
+  merge_sort(result, nums1, nums2, SIZE);
+
+
+  // Output the merged array
+  printf("\n-----Arrays Merged-----\n");
+  display_arr(result, SIZE * 2);
+  printf("\n");
+
+
+  // Find a random number within the merged list
+  int num_to_find = rand() % 100;
+  binary_search(result, 0, SIZE * 2, num_to_find);
+  
+  return 0;
+}
+
+// Function to display the contents of an array to a given size
+void display_arr(int arr[], int size)
+{
+  for (int i = 0; i < size; i++) printf("%d ", arr[i]);
+}
+
+// Insertion Sort algorithm
+void insertion_sort(int* arr, int size)
+{
+  for (int i = 1; i < size; i++)
+  {
+    int current = arr[i];
+    int j = i;
+
+    while (arr[j - 1] > current && j > 0)
+    {
+      arr[j] = arr[j - 1];
+      j = j - 1;
+    }
+
+    arr[j] = current;
+  }
+}
+
+// Merge the two arrays into an array of size 200
+void merge_sort(int* target, int* arr1, int* arr2, int size)
+{
+  int i = 0, left = 0, right = 0;
+
+  while(left < size && right < size)
+  {
+    if (arr1[left] < arr2[right]) target[i++] = arr1[left++];
+    else target[i++] = arr2[right++];
+  }
+
+  while (left < size) target[i++] = arr1[left++];
+  while (right < size) target[i++] = arr2[right++];
+}
+
+
+// Recursive binary search to find a number in the array
+void binary_search(int* arr, int low, int high, int num)
+{
+  if (low > high)
+  {
+    printf("\nNumber %d not found in the array.\n", num);
+    return;
+  }
+
+  int mid = (low + high) / 2;
+
+  if (arr[mid] == num)
+  {
+    printf("\nNumber %d found at index %d.\n", num, mid);
+    return;
+  }
+  else if (arr[mid] > num) binary_search(arr, low, mid - 1, num);
+  else binary_search(arr, mid + 1, high, num);
+}
